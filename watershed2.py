@@ -56,22 +56,4 @@ plt.imshow(img2)
 cv2.imshow('Overlay on original image', img)
 cv2.imshow('Colored Grains', img2)
 cv2.waitKey(0)
-    
-props = measure.regionprops_table(markers, cells, 
-                          properties=['label',
-                                      'area', 'equivalent_diameter',
-                                      'mean_intensity', 'solidity', 'orientation',
-                                      'perimeter'])
-
-import pandas as pd
-df = pd.DataFrame(props)
-print(df.head())
-
-#To delete small regions...
-df = df[df['area'] > 50]
-print(df.head())
-
-df['area_sq_microns'] = df['area'] * (pixels_to_um**2)
-df['equivalent_diameter_microns'] = df['equivalent_diameter'] * (pixels_to_um)
-print(df.head())
-
+  
